@@ -105,15 +105,15 @@ Looking at a random subset of the files, the dataset seems to consists of pictur
 2. Pedestrians (Type 2, green box)
 3. Bikes (Type 4, unknown)
 
-"Insert pictures here"
+![Example traffic](images/traffic.png)
 
 A subset of 50.000 files reveales a very uneven distribution regarding the number of encounters of specific types, heavily prefering cars and marginalising bikes.
 
-"Insert graph here"
+![Count of types](images/per_class.PNG)
 
 Also many pictures seem to feature quite a big number of objects, some featuring up to 80.
-### Cross validation
-This section should detail the cross validation strategy and justify your approach.
+
+![Count objects in picture](images/per_picture.PNG)
 
 ## Training
 ### Reference experiment
@@ -123,7 +123,7 @@ The first run consisted of the preset conditions, that is:
 -random crop
 ```
 
-"Insert pictures No 0"
+![train_0](images/train_0.PNG)
 
 ### Improve on the reference
 
@@ -136,13 +136,13 @@ In the second run some augmentations were added, mainly to compensate for dark p
 -random adjust contrast
 ```
 
-"Insert pictures No 1"
+![train_1](images/train_1.PNG)
 
 As can be seen the outcome worsened.
 
 Leaving no augmentations on the other hand, worsened the outcome as well.
 
-"Insert picture No 3"
+![train_3](images/train_3.PNG)
 
 After various trys with different augmentations, culminating in the following options:
 
@@ -156,9 +156,9 @@ After various trys with different augmentations, culminating in the following op
 -random distor color
 ```
 
-"Insert pictures No 4"
+![train_4](images/train_4.PNG)
 
-the parameters did not show any signes of improvement and
+While the process crashed due to low memory the parameters did not show any signes of improvement.
 
 In the last run the augmentations have been reset to:
 
@@ -174,9 +174,20 @@ optimizer learning rate_base 0.04 -> 0.001
 warmup_learning_rate: 0.01333 -> 0.001
 ```
 
-This lead to a vastly better outcome:
+While the training crashed at about 1000 iterations, the outcome seems to be far better:
 
-"Insert train"
+![train_final](images/train_final.PNG)
+
+Comparing the evaluations (the fourth is missing due to low memory) shows a similar picture in the total loss
+
+![eval](images/eval.PNG)
+```
+green -> number 3
+blue -> final
+light blue -> first
+```
+
+While the classification loss is the highest in the final iteration, this might be due to the low number of iterations.
 
 ### Conclusion
 
