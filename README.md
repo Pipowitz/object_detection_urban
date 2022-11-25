@@ -107,6 +107,9 @@ Looking at a random subset of the files, the dataset seems to consists of pictur
 
 ![Example traffic](images/traffic.png)
 
+As can be seen, some images have been made in the nighttime, being dark and having little color.
+Others are also blurry, having little contrast.
+
 A subset of 50.000 files reveales a very uneven distribution regarding the number of encounters of specific types, heavily prefering cars and marginalising bikes.
 
 ![Count of types](images/per_class.PNG)
@@ -120,7 +123,7 @@ Also many pictures seem to feature quite a big number of objects, some featuring
 The first run consisted of the preset conditions, that is:
 
 ```
--random crop
+-random crop (cuts part of the pictures, adds some (realistic) randomness)
 ```
 
 ![train_0](images/train_0.PNG)
@@ -131,9 +134,9 @@ In the second run some augmentations were added, mainly to compensate for dark p
 
 ```
 -random crop
--random horizontal flip
--random adjust brightness
--random adjust contrast
+-random horizontal flip (mirrors the pictures at the horizontal axis, adds some (realistic) randomness)
+-random adjust brightness (helps with nighttime images)
+-random adjust contrast (helps with blurry images)
 ```
 
 ![train_1](images/train_1.PNG)
@@ -151,9 +154,9 @@ After various trys with different augmentations, culminating in the following op
 -random crop image
 -random adjust brightness
 -random adjust contrast
--random adjust hue
--random adjust saturation
--random distor color
+-random adjust hue (helps with foggy, or nighttime images)
+-random adjust saturation (helps with foggy images)
+-random distor color (adds randomness to the color palette)
 ```
 
 ![train_4](images/train_4.PNG)
